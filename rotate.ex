@@ -1,3 +1,7 @@
+#This defines the matrices to rotate the cube around each axis. 
+#The next step will be to create a function to apply the appropriate Rotate.axis
+#to all blocks where, for example, x = -1.
+
 #define rotation matrices
 defmodule Rotate do
   def xxx (init) do
