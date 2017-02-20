@@ -7,3 +7,5 @@ defmodule Permutations do
             for x <- list, y <- shuffle(list, i-1), do: [x|y]
        end
    end
+
+#credit to sobelevn on stackoverflow
