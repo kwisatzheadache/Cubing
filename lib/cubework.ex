@@ -48,16 +48,22 @@ defmodule Cubework.Apply do
   def xa(input) do
     if Enum.at(input,0)==-1 do
        Cubework.Rotate.xxx([input])
+    else 
+      input
     end
   end
   def xb(input) do
     if Enum.at(input,0)==0 do
        Cubework.Rotate.xxx([input])
+    else
+      input
     end
   end
   def xc(input) do
     if Enum.at(input,0)==1 do
        Cubework.Rotate.xxx([input])
+    else 
+      input
     end
   end
 
@@ -65,32 +71,44 @@ defmodule Cubework.Apply do
   def ya(input) do
     if Enum.at(input,1)==-1 do
       Cubework.Rotate.yyy([input])
+    else
+      input
     end
   end
   def yb(input) do
     if Enum.at(input,1)==0 do
       Cubework.Rotate.yyy([input])
+    else 
+      input
     end
   end
   def yc(input) do
     if Enum.at(input,1)==1 do
       Cubework.Rotate.yyy([input])
+    else
+      input
     end
   end
 #### Rotation around Z axis
   def za(input) do
     if Enum.at(input,2)==-1 do
       Cubework.Rotate.zzz([input])
+    else
+      input
     end
   end
   def zb(input) do
     if Enum.at(input,2)==0 do
       Cubework.Rotate.zzz([input])
+    else
+      input
     end
   end
   def zc(input) do
     if Enum.at(input,2)==1 do
       Cubework.Rotate.zzz([input])
+    else
+      input
     end
   end
 end
@@ -98,3 +116,36 @@ end
 #Now we need to feed a list of vectors(3) through the previous function, such that
 #out of 27 vectors, each of the functions above only act on 9 vectors (like an
 #actual rubix cube rotation.
+
+defmodule Rotate do
+  def xa(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.xa(x) end)
+  end
+  def xb(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.xb(x) end)
+  end
+  def xc(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.xc(x) end)
+  end
+
+  def ya(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.ya(x) end)
+  end
+  def yb(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.yb(x) end)
+  end
+  def yc(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.yc(x) end)
+  end
+
+  def za(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.za(x) end)
+  end
+  def zb(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.zb(x) end)
+  end
+  def zc(cubelist) do
+    Enum.map(cubelist, fn(x) -> Cubework.Apply.zc(x) end)
+  end
+end
+
