@@ -1,151 +1,46 @@
-defmodule Cubework do
-end
+# This is a module to manipulate a hypothetical rubix cube.
+# First, we must decide how to conceptualize the cube.
+# I have chosen to represent each colored block individually,
+# giving them XYZ coordinates, ranging from -1 to 1. Thus,
+# each of the 27 pieces of the cube is represented by a vector,
+# which allows us to rotate the pieces according to simple rotation
+# matrices. Since the rotations will always be 90 degrees, we can
+# simplify the rotation matrices and remove sin(angle)/cos(angle).
 
-defmodule Cubework.Rotate do
-  @moduledoc """
-  This defines the matrices to rotate the cube around each axis.
-  The next step will be to create a function to apply the appropriate Rotate.axis
-  to all blocks where, for example, x = -1.
-  """
 
-  @doc """
-  Define rotation matrices.
-  """
-  def xxx(init) do
-     rot_x = [[1,0,0], [0,0,-1], [0,1,0]]
-     Matrix.mult(init,rot_x)
+defmodule Cubing do
+  def rotate(cube, axis, position) do
+    {matrix, index} = #define the rotation matrix, as well as providing a reference point, to be called by Enum.at and apply the rotation matrix to only the appropriate blocks.
+      case axis do
+        :x -> {[[1,0,0],
+               [0,0,-1],
+               [0,1,0]],0}
+
+        :y -> {[[0,0,1],
+               [0,1,0],
+               [-1,0,0]],1}
+
+        :z -> {[[0,-1,0],
+               [1,0,0],
+               [0,0,1]],2}
+      end
+    Enum.map(cube, fn(input) -> if Enum.at(input, index) == position do #passes each block through the function - if a block's x, y, or z coordinate matches the selected axis value, it passes through
+    end
+     List.flatten(Matrix.mult([input], matrix)) #apply the rotation matrices to the appropriate blocks
+      else
+       input # otherwise, returns the original value. In a given rotation, only 9 blocks will be transformed, while 18 values will be returned the same.
+      end
+      end)
+    end
   end
-
-  def yyy(init) do
-    rot_y = [[0,0,1], [0,1,0], [-1,0,0]]
-    Matrix.mult(init,rot_y)
-  end
-
-  def zzz(init) do
-    rot_z = [[0,-1,0], [1,0,0], [0,0,1]]
-    Matrix.mult(init,rot_z)
-  end
-end
 
 # credit to sobelevn on stackoverflow
-defmodule Cubework.Permutations do
+defmodule Cubing.Permutations do
   def shuffle(list), do: shuffle(list, length(list))
-
   def shuffle([], _), do: [[]]
   def shuffle(_,  0), do: [[]]
   def shuffle(list, i) do
     for x <- list, y <- shuffle(list, i-1), do: [x|y]
-  end
-end
-
-#Create conditionals to apply rotations only to Axis = x
-
-#Function to apply rotation to vectors, according to Axis = value
-
-defmodule Cubework.Apply do
-
-#### Rotation around X axis
-  def xa(input) do
-    if Enum.at(input,0)==-1 do
-       Cubework.Rotate.xxx([input])
-    else 
-      input
-    end
-  end
-  def xb(input) do
-    if Enum.at(input,0)==0 do
-       Cubework.Rotate.xxx([input])
-    else
-      input
-    end
-  end
-  def xc(input) do
-    if Enum.at(input,0)==1 do
-       Cubework.Rotate.xxx([input])
-    else 
-      input
-    end
-  end
-
-#### Rotation around Y axis
-  def ya(input) do
-    if Enum.at(input,1)==-1 do
-      Cubework.Rotate.yyy([input])
-    else
-      input
-    end
-  end
-  def yb(input) do
-    if Enum.at(input,1)==0 do
-      Cubework.Rotate.yyy([input])
-    else 
-      input
-    end
-  end
-  def yc(input) do
-    if Enum.at(input,1)==1 do
-      Cubework.Rotate.yyy([input])
-    else
-      input
-    end
-  end
-#### Rotation around Z axis
-  def za(input) do
-    if Enum.at(input,2)==-1 do
-      Cubework.Rotate.zzz([input])
-    else
-      input
-    end
-  end
-  def zb(input) do
-    if Enum.at(input,2)==0 do
-      Cubework.Rotate.zzz([input])
-    else
-      input
-    end
-  end
-  def zc(input) do
-    if Enum.at(input,2)==1 do
-      Cubework.Rotate.zzz([input])
-    else
-      input
-    end
-  end
-end
-
-#Now we need to feed a list of vectors(3) through the previous function, such that
-#out of 27 vectors, each of the functions above only act on 9 vectors (like an
-#actual rubix cube rotation.
-
-defmodule Rotate do
-  def xa(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.xa(x) end)
-  end
-  def xb(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.xb(x) end)
-  end
-  def xc(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.xc(x) end)
-  end
-
-  def ya(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.ya(x) end)
-  end
-  def yb(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.yb(x) end)
-  end
-  def yc(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.yc(x) end)
-  end
-
-  def za(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.za(x) end)
-  end
-  def zb(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.zb(x) end)
-  end
-  def zc(cubelist) do
-    Enum.map(cubelist, fn(x) -> Cubework.Apply.zc(x) end)
   end
 end
 
