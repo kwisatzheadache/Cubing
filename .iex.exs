@@ -8,9 +8,9 @@
 
   s,t,u,
   v,w,x,
-  y,z,aa] = Cubework.Permutations.shuffle [-1, 0, 1]
+  y,z,aa] = Cubing.Permutations.shuffle [-1, 0, 1]
 
-  cubelist = [a,b,c,
+  cube = [a,b,c,
               d,e,f,
               g,h,i,
 
