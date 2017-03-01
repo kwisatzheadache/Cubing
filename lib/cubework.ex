@@ -82,3 +82,31 @@ defmodule Cubing.Permutations do
   end
 end
 
+
+# Module to attempt some sort of fitness determination.
+# Diff_vector is the difference between the vector in position x of the cube before/after shuffle
+# diff_mag is the weight, the length of the vector
+# the sum of these weights is potentially useful in determining fitness
+defmodule Fitness do
+  def dv_mag(cube, shuffled, listposition) do
+    diff_vector = List.flatten(Matrix.sub([Enum.at(cube, listposition)], [Enum.at(shuffled,listposition)]))
+    diff_mag = Math.sqrt(Enum.sum(Enum.map(diff_vector, fn(x) -> x*x end)))
+  end
+
+# Recursive function to find the sum of the diff_mag's
+# There's a better way to do this I'm sure, but this will work for now.
+
+  def total(cube, shuffled, acc, counter) when counter < 26 do
+    fit = acc + Fitness.dv_mag(cube, shuffled, counter)
+    nextit = counter + 1
+    Fitness.total(cube, shuffled, fit, nextit)
+  end
+
+  def total(cube, shuffled, acc, counter) do
+    fit = acc + Fitness.dv_mag(cube, shuffled, counter)
+    IO.inspect fit
+  end
+end
+
+# The problem now is there there is relatively little variance in possible
+# fitness totals. I'll have to look into whether it will be useful or not.
