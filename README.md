@@ -22,11 +22,16 @@ doesn't quite train properly. However, if you want to check it out,
 pull the repository and run the following:
 
 mix deps.get
+
 mix compile
+
 iex -S mix
 
+
 iex(1)> {:ok, fitness, metadata} = Trainer.begin(cubeslice, in_cube)
+
 Trainer.evolve(cubeslice, in_cube, fitness, metadata, 10)
+
 flush()
 
 
