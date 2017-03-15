@@ -3,6 +3,7 @@
   "credo": {:hex, :credo, "0.6.1", "a941e2591bd2bd2055dc92b810c174650b40b8290459c89a835af9d59ac4a5f8", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, optional: false]}]},
   "exmatrix": {:hex, :exmatrix, "0.0.1", "bd91870e87597c890af938e14db6292fc9c0c14870b03b966e7d5e8059c84229", [:mix], [{:benchfella, "~> 0.2.0", [hex: :benchfella, optional: false]}]},
   "exprintf": {:hex, :exprintf, "0.2.1", "b7e895dfb00520cfb7fc1671303b63b37dc3897c59be7cbf1ae62f766a8a0314", [:mix], []},
+  "graphmath": {:hex, :graphmath, "1.0.3", "ff961a5533fea4648ae47501ff241b4004ee719220d251abd44bc83f78f891bb", [:mix], []},
   "math": {:hex, :math, "0.3.0", "e14e7291115201cb155a3567e66d196bf5088a6f55b030d598107d7ae934a11c", [:mix], []},
   "matrix": {:hex, :matrix, "0.3.2", "9c826bc3a1117bf5e1c5cdcf3a3d95456c93bc2e127a04e363e9fc90b724f784", [:mix], [{:exprintf, "~> 0.1", [hex: :exprintf, optional: false]}]},
-  "plug": {:hex, :plug, "1.1.6", "8927e4028433fcb859e000b9389ee9c37c80eb28378eeeea31b0273350bf668b", [:mix], [{:cowboy, "~> 1.0", [hex: :cowboy, optional: true]}]}}
+  "plug": {:hex, :plug, "1.0.5", "cb24577f202eef8cb83ad1b5f8810581c8ab8da03252551a04299b9877b3044a", [:mix], [{:cowboy, "~> 1.0", [hex: :cowboy, optional: true]}]}}

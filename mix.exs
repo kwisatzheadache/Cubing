@@ -16,10 +16,12 @@ defmodule Cubework.Mixfile do
 
   defp deps do
     [
+      {:graphmath, "~> 1.0.2"},
       {:exmatrix, "~> 0.0.1"},
       {:matrix, "~>0.3.0"},
       {:math, "~> 0.3.0"},
-      {:credo, "~> 0.5", only: [:dev, :test]}
+      {:credo, "~> 0.5", only: [:dev, :test]},
+      {:plug, "~> 1.0.3"}
     ]
   end
 end
