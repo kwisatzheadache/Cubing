@@ -23,17 +23,14 @@ pull the repository and run the following:
 
 ```
 mix deps.get
-
 mix compile
-
 iex -S mix
 ```
 
+Once in the REPL, do
 ``` elixir
-iex(1)> {:ok, fitness, metadata} = Trainer.begin(cubeslice, in_cube)
-
+{:ok, fitness, metadata} = Trainer.begin(cubeslice, in_cube)
 Trainer.evolve(cubeslice, in_cube, fitness, metadata, 10)
-
 flush()
 ```
 
