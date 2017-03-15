@@ -18,8 +18,9 @@ defmodule Cortex do
 
   defp loop(pids) do
     receive do
-      {:sense, input} ->
+      {:sense, input, weights} ->
         Agent.update(pids, fn list -> Map.put(list, :input, input) end)
+        Agent.update(pids, fn list -> Map.put(list, :weights, weights) end)
         metadata = Agent.get(pids, fn list -> list end)
         Sense.input(Agent.get(pids, fn list -> Map.get(list, :neuron) end), metadata)
         send (Agent.get(pids, fn list -> Map.get(list, :self) end)), {:ok, metadata, pids}
