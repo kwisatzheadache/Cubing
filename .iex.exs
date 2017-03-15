@@ -1,5 +1,5 @@
-[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,zz] = Cubing.Permutations.shuffle [-1,0,1]
-cube = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,zz] 
+[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa] = Cubing.Permutations.shuffle [-1,0,1]
+cube = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa] 
 
 cubeslice = [[1,1,1], [1,0,1],[-1,1,-1]]
 in_cube = [[1,1,1],[1,0,1],[1,-1,1]]
