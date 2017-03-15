@@ -21,19 +21,21 @@ So far, I've got a functioning cube module and a single neuron NN that
 doesn't quite train properly. However, if you want to check it out, 
 pull the repository and run the following:
 
+```
 mix deps.get
 
 mix compile
 
 iex -S mix
+```
 
-
+``` elixir
 iex(1)> {:ok, fitness, metadata} = Trainer.begin(cubeslice, in_cube)
 
 Trainer.evolve(cubeslice, in_cube, fitness, metadata, 10)
 
 flush()
-
+```
 
 
 This will take a slice of the rubix cube and run it through the NN. The NN 
