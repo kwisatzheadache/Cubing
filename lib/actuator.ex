@@ -15,8 +15,10 @@ defmodule Actuator do
       {:ok, output, metadata} ->
         final = 
           case output do
-            output when output < 0 -> :x_is_1 
-            _ -> :x_is_0
+            output when -1 < output < 0 -> :x1 
+            output when -5 < output <= -1 -> :x0
+              output when 0 <= output < 2 -> :y1
+            _ -> :y0
           end
     send metadata[:self], {:actuator_firing, final, metadata}
     loop(threshold)

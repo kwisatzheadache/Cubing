@@ -12,6 +12,7 @@ defmodule Cortex do
     Agent.update(pids, fn list -> Map.put(list, :neuron, neuron) end)
     Agent.update(pids, fn list -> Map.put(list, :actuator, actuator) end)
     Agent.update(pids, fn list -> Map.put(list, :self, self) end)
+    Agent.update(pids, fn list -> Map.put(list, :agent, pids) end)
     #Agent.update(pids, fn list -> Map.put(list, :weights, weights) end)
     Task.start_link(fn -> loop(pids) end)
   end
